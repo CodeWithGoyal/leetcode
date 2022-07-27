@@ -5,16 +5,15 @@ class Solution {
         if(visited[i] == -2) return false;
         if(adj.get(i).size() == 0){
             visited[i] = 1;
-            res.add(i);
+            // res.add(i);
             return true;
         }
         visited[i] = -2;
         boolean re = true;
         for(int x : adj.get(i)){
             re = re & dfs(adj,visited,res,x);
-            // System.out.println(re + " " + x);
         }
-        if(re) { visited[i] = 1;res.add(i);}
+        if(re) { visited[i] = 1;}
         else visited[i] = -1;
         
         return visited[i] == 1;
@@ -30,11 +29,13 @@ class Solution {
         }
        int visited[] = new int[graph.length];
         for(int i = 0;i < graph.length; i++){
-            if(visited[i] == 0){
-                dfs(adj,visited,res,i);
+            // if(visited[i] == 0){
+            if(dfs(adj,visited,res,i)){
+                res.add(i);
             }
+            // }
         }
-        Collections.sort(res);
+        // Collections.sort(res);
         return res;
     }
 }
