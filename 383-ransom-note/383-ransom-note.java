@@ -5,8 +5,11 @@ class Solution {
             count[c - 'a']++;
         }
         for(char c : ransomNote.toCharArray()){
-            if(count[c - 'a'] <= 0) return false;
+            // if(count[c - 'a'] <= 0) return false;
             count[c - 'a']--;
+        }
+        for(int i  : count){
+            if(i < 0) return false;
         }
         return true;
     }
