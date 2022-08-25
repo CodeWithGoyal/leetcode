@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-    int number1 = -1, number2 = -1, count1 = 0, count2 = 0, len = nums.length;
+    int number1 = -1, number2 = 1, count1 = 0, count2 = 0, len = nums.length;
     for (int i = 0; i < len; i++) {
       if (nums[i] == number1)
         count1++;
