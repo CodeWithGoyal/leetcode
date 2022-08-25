@@ -1,35 +1,46 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-    int number1 = -1, number2 = 1, count1 = 0, count2 = 0, len = nums.length;
-    for (int i = 0; i < len; i++) {
-      if (nums[i] == number1)
-        count1++;
-      else if (nums[i] == number2)
-        count2++;
-      else if (count1 == 0) {
-        number1 = nums[i];
-        count1 = 1;
-      } else if (count2 == 0) {
-        number2 = nums[i];
-        count2 = 1;
-      } else {
-        count1--;
-        count2--;
-      }
-    }
-    List < Integer > ans = new ArrayList < Integer > ();
-    count1 = 0;
-    count2 = 0;
-    for (int i = 0; i < len; i++) {
-      if (nums[i] == number1)
-        count1++;
-      else if (nums[i] == number2)
-        count2++;
-    }
-    if (count1 > len / 3)
-      ans.add(number1);
-    if (count2 > len / 3)
-      ans.add(number2);
-    return ans;
+        int maj1 = Integer.MIN_VALUE, maj2 = Integer.MAX_VALUE, c1 = 0, c2 = 0;
+        for(int i : nums){
+            if(i == maj1){
+                c1++;
+            }
+            else if(i == maj2){
+                c2++;
+            }
+            else if(c1 == 0){
+                maj1 = i;
+                c1 = 1;
+            }
+            else if(c2 == 0){
+                maj2 = i;
+                c2 = 1;
+            }
+            else{
+                c1--;
+                c2--;
+                // maj1 = Integer.MIN_VALUE;
+                // maj2 = Integer.MAX_VALUE;
+            }
+        }
+        c1 = 0;
+        c2 = 0;
+        for(int i : nums){
+            if(i == maj1){
+                c1++;
+            }
+            else if(i == maj2){
+                c2++;
+            }
+        }
+        List<Integer> list = new ArrayList<>();
+        System.out.println(maj1 + " " + maj2);
+        if(c1 > nums.length/3){
+            list.add(maj1);
+        }
+        if(c2 > nums.length/3){
+            list.add(maj2);
+        }
+        return list;
     }
 }
