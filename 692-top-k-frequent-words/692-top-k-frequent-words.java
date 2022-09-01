@@ -27,7 +27,7 @@ class Solution {
         int i = 0;
         List<String> res = new ArrayList<>();
         while(k-- > 0){
-            res.add(list.get(i++).str);
+            res.add(list.remove(0).str);
         }
         return res;
     }
