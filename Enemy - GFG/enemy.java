@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.io.*;
 import java.util.*;
 
@@ -89,35 +89,33 @@ class GFG {
         }
     }
 }
+
 // } Driver Code Ends
 
 
+       
+
 class Solution {
-    public static int largestArea(int n,int m,int k,int[][] e) {
+    public static int largestArea(int n,int m,int k,int[][] enemy) {
         // code here
-        int row[] = new int[k];
-        int col[] = new int[k];
-        for(int i = 0; i < k; i++){
-            row[i] = e[i][0]-1;
-            col[i] = e[i][1]-1;
+        ArrayList<Integer> row = new ArrayList<>();
+        ArrayList<Integer> col = new ArrayList<>();
+        row.add(0);
+        row.add(n+1);
+        col.add(m+1);
+        col.add(0);
+        for(int i[]: enemy){
+            row.add(i[0]);
+            col.add(i[1]);
         }
-        Arrays.sort(row);
-        Arrays.sort(col);
-        int prev = -1,max = 0;
-        for(int i : row){
-            max = Math.max(max,i - prev - 1);
-            prev = i;
+        Collections.sort(row);
+        Collections.sort(col);
+        int r = 0, c = 0;
+        for(int i = 0;i < k + 1; i++){
+            r = Math.max(r,row.get(i + 1) - row.get(i));
+            c = Math.max(c,col.get(i + 1) - col.get(i));
         }
-        max = Math.max(max,n - prev - 1);
-        
-        prev = -1;
-        int ma = 0;
-        for(int i : col){
-            ma = Math.max(ma,i - prev - 1);
-            prev = i;
-        }
-        ma = Math.max(ma,m - prev - 1);
-        return ma*max;
+        return (r-1)*(c-1);
     }
 }
-        
+ 
